@@ -18,7 +18,7 @@ const MyPurchases = () => {
                 });
                 const purchasedData = await response.json();
                 let purchasedIds = purchasedData.courses;
-                purchasedIds = purchasedIds.map(course => course._id);
+                purchasedIds = purchasedIds.map(course => course.courseId);
                 // Second fetch - get all courses
                 const coursesResponse = await fetch(`https://csa-backend.vercel.app/courses/preview`);
                 let allCourses = await coursesResponse.json();
@@ -28,7 +28,6 @@ const MyPurchases = () => {
                     return purchasedIds.includes(course._id)}
                 );
                 
-
                 setCoursesList(purchasedCourses);
                 
             } catch (err) {
