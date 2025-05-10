@@ -30,6 +30,7 @@ const Course = ({course}) => {
                   {course.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{course.description}</p>
+                <p className="text-gray-600 mb-4">₹{course.price}</p>
                 
                 {localStorage.getItem("userType")==="user"&&<button className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
                 onClick={() => {handleEnroll(course._id)}}>
