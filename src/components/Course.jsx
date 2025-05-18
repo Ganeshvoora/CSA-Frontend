@@ -1,7 +1,7 @@
 //import React from 'react'
 
 
-const Course = ({course}) => {
+const Course = ({course,enroll}) => {
   function handleEnroll(courseId) {
     fetch(`https://csa-backend.vercel.app/courses/purchase`, {
       method: 'POST',
@@ -32,7 +32,7 @@ const Course = ({course}) => {
                 <p className="text-gray-600 mb-4">{course.description}</p>
                 <p className="text-gray-600 mb-4">₹{course.price}</p>
                 
-                {localStorage.getItem("userType")==="user"&&<button className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                {(localStorage.getItem("userType")==="user"&&(enroll!==true))&&<button className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
                 onClick={() => {handleEnroll(course._id)}}>
                   Enroll Now
                 </button>}
