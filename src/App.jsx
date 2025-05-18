@@ -1,7 +1,7 @@
 //import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Courses from './pages/Courses'
+import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import NotFound from './pages/NotFound'
@@ -14,7 +14,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <><Navbar /><Courses /></>
+      element: <><Navbar /><Home /></>
     },
     {
       path: "/signup",
