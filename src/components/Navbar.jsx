@@ -64,32 +64,18 @@ const Navbar = () => {
           </Link>
           
           <Link
-            to="/admin/signin"
+            to="/signin"
             className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
-            
           >
-            Admin Sign In
+            Sign In
           </Link>
+          
+          
           <Link
-            to="/admin/signup"
+            to="/signup"
             className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
-            
           >
-            Admin Sign Up
-          </Link>
-          <Link
-            to="/user/signin"
-            className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
-           
-          >
-            User Sign In
-          </Link>
-          <Link
-            to="/user/signup"
-            className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
-            
-          >
-            User Sign Up
+            Sign Up
           </Link>
         </>
       );
@@ -171,33 +157,20 @@ const Navbar = () => {
             Home
           </Link>
           
+          
           <Link
-            to="/admin/signin"
+            to="/signin"
             className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
             onClick={() => setIsOpen(false)}
           >
-            Admin Sign In
+            Sign In
           </Link>
           <Link
-            to="/admin/signup"
+            to="/signup"
             className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
             onClick={() => setIsOpen(false)}
           >
-            Admin Sign Up
-          </Link>
-          <Link
-            to="/user/signin"
-            className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
-            onClick={() => setIsOpen(false)}
-          >
-            User Sign In
-          </Link>
-          <Link
-            to="/user/signup"
-            className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
-            onClick={() => setIsOpen(false)}
-          >
-            User Sign Up
+            Sign Up
           </Link>
         </>
       );

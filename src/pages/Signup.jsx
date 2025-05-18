@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const UserSignup = () => {
+const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
     lastName: '',
-    password: ''
+    password: '',
+    userType: 'user' // Default to user type
   });
 
   const handleChange = (e) => {
@@ -17,10 +18,22 @@ const UserSignup = () => {
     });
   };
 
+  const handleUserTypeChange = (type) => {
+    setFormData({
+      ...formData,
+      userType: type
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://csa-backend.vercel.app/user/signup`, {
+      // Select the appropriate endpoint based on userType
+      const endpoint = formData.userType === 'admin' 
+        ? 'https://csa-backend.vercel.app/admin/signup' 
+        : 'https://csa-backend.vercel.app/user/signup';
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +43,7 @@ const UserSignup = () => {
 
       if (response.ok) {
         alert('Signup successful!');
-        navigate('/user/signin');
+        navigate(`/${formData.userType}/signin`);
       } else {
         const data = await response.json();
         alert(data.message || 'Signup failed!');
@@ -51,6 +64,35 @@ const UserSignup = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          {/* User type selection buttons */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              I am registering as:
+            </label>
+            <div className="flex space-x-4">
+              <button
+                type="button"
+                onClick={() => handleUserTypeChange('user')}
+                className={`flex-1 py-2 px-4 border rounded-md shadow-sm text-sm font-medium 
+                  ${formData.userType === 'user' 
+                    ? 'bg-indigo-600 text-white border-transparent' 
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`}
+              >
+                Student
+              </button>
+              <button
+                type="button"
+                onClick={() => handleUserTypeChange('admin')}
+                className={`flex-1 py-2 px-4 border rounded-md shadow-sm text-sm font-medium 
+                  ${formData.userType === 'admin' 
+                    ? 'bg-indigo-600 text-white border-transparent' 
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`}
+              >
+                Admin
+              </button>
+            </div>
+          </div>
+          
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -125,7 +167,7 @@ const UserSignup = () => {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Sign up
+                Sign up as {formData.userType === 'admin' ? 'Admin' : 'Student'}
               </button>
             </div>
           </form>
@@ -135,4 +177,4 @@ const UserSignup = () => {
   )
 }
 
-export default UserSignup
+export default Signup

@@ -2,10 +2,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Courses from './pages/Courses'
-import AdminSignup from './pages/AdminSignup'
-import UserSignup from './pages/UserSignup'
-import UserSignin from './pages/UserSignin'
-import AdminSignin from './pages/AdminSignin'
+import Signup from './pages/Signup'
+import Signin from './pages/Signin'
 import NotFound from './pages/NotFound'
 import MyPurchases from './pages/MyPurchases'
 import AdminCourses from './pages/AdminCourses'
@@ -19,12 +17,12 @@ function App() {
       element: <><Navbar /><Courses /></>
     },
     {
-      path: "/admin/signup",
-      element: <><Navbar /><AdminSignup /></>
+      path: "/signup",
+      element: <><Navbar /><Signup /></>
     },
     {
-      path: "/admin/signin",
-      element: <><Navbar /><AdminSignin /></>
+      path: "/signin",
+      element: <><Navbar /><Signin /></>
     },
     {
       path: "/admin/courses",
@@ -37,14 +35,6 @@ function App() {
     {
       path: "/admin/update-course/:id",
       element: <><Navbar /><UpdateCourse /></>
-    },
-    {
-      path: "/user/signup",
-      element: <><Navbar /><UserSignup /></>
-    },
-    {
-      path: "/user/signin",
-      element: <><Navbar /><UserSignin /></>
     },
     {
       path: "/user/my-purchases",

@@ -22,7 +22,7 @@ const Course = ({course,enroll}) => {
                 <img
                   src={course.imageURL}
                   alt={course.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="p-6">
